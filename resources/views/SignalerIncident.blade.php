@@ -70,20 +70,22 @@
     <div class="container">
         <h1>Signaler un incident</h1>
         <form action="traitement_incident.php" method="POST">
-            <label for="date_ouverture">Date et heure d'ouverture</label>
-            <input type="datetime-local" id="date_ouverture" name="date_ouverture" required>
+            <!-- <label for="date_ouverture">Date et heure d'ouverture</label> -->
+            <!-- <input type="datetime-local" id="date_ouverture" name="date_ouverture" required> -->
 
             <label for="description">Description</label>
             <textarea id="description" name="description" rows="4" required></textarea>
 
-            <label for="date_fermeture">Date et heure de fermeture (facultatif)</label>
-            <input type="datetime-local" id="date_fermeture" name="date_fermeture">
+            <!-- <label for="date_fermeture">Date et heure de fermeture (facultatif)</label> -->
+            <!-- <input type="datetime-local" id="date_fermeture" name="date_fermeture"> -->
 
             <label for="salle">Salle</label>
             <input type="text" id="salle" name="salle" required>
 
             <label for="poste">Poste</label>
             <input type="text" id="poste" name="poste" required>
+            <label for="poste">Batiment</label>
+            <input type="text" id="Batiment" name="Batiment" required>
 
             <label for="materiel">Matériel concerné</label>
             <select id="materiel" name="materiel" required>
@@ -121,13 +123,13 @@
                 <option value="3">3 - Basse</option>
             </select>
 
-            <label for="etat">État</label>
-            <select id="etat" name="etat" required>
-                <option value="1">1 - Ouvert</option>
-                <option value="2">2 - Pris en charge</option>
-                <option value="3">3 - Fermé</option>
-            </select>
 
+            <!-- <label for="etat">État</label> -->
+            <!-- <select id="etat" name="etat" required> -->
+                <!-- <option value="1">1 - Ouvert</option> -->
+                <!-- <option value="2">2 - Pris en charge</option> -->
+                <!-- <option value="3">3 - Fermé</option> -->
+            <!-- </select> */ -->
             <button type="submit">Signaler l'incident</button>
         </form>
     </div>

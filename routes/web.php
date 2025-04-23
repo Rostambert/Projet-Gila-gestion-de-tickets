@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UtilisateursController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('MesIncidents');
+    return view('connexion');
 });
+
+
+
+Route::post('/connexion', [UtilisateursController::class, 'UtilisateursController'])->name('utilisateur.post');
+
+// Route::get('/admin', function () {
+    // return view('admin');
+// })->name('admin.get');
+
+Route::get('/login', function () {
+    return view('Agent');
+})->name('agent.get');
+
+Route::get('/login', function () {
+    return view('utilisateur');
+})->name('utilisateur.get');
+
