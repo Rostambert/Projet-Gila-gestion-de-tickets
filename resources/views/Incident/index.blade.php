@@ -24,21 +24,47 @@
                               <th class="px-4 py-2 border border-gray-400">Statut</th>
                               <th class="px-4 py-2 border border-gray-400">Date et Heure de fermeture</th>
                               <th class="px-4 py-2 border border-gray-400">Date et Heure de signalement</th>
+                              @if (auth()->user()->role == 'agent')
+                              <th class="px-4 py-2 border border-gray-400">Créé par</th>
+                              <th class="px-4 py-2 border border-gray-400">Action</th> 
+                              @endif
+                              
+                              
                               
                               
                               
                             </tr>
                           </thead>
                           <tbody>
-                            <!-- Boucle sur les incidents -->
-                            {{-- @foreach($incidents as $incident)
-                            <tr class="even:bg-gray-100">
-                              <td class="px-4 py-2 border border-gray-400">{{ $incident->id }}</td>
-                              <td class="px-4 py-2 border border-gray-400">{{ $incident->date }}</td>
+                            @foreach ($incidents as $incident)
+                            <tr class="hover:bg-gray-100 cursor-pointer" onclick="window.location.href='{{ route('incident.show', $incident->id) }}'">
                               <td class="px-4 py-2 border border-gray-400">{{ $incident->description }}</td>
-                              <td class="px-4 py-2 border border-gray-400">{{ $incident->statut }}</td>
+                              <td class="px-4 py-2 border border-gray-400">{{ $incident->materiel->type }}</td>
+                              <td class="px-4 py-2 border border-gray-400">{{ $incident->salle }}</td>
+                              <td class="px-4 py-2 border border-gray-400">{{ $incident->poste }}</td>
+                              <td class="px-4 py-2 border border-gray-400">{{ $incident->batiment }}</td>
+                              <td class="px-4 py-2 border border-gray-400">
+                                @if($incident->priorite == 1) Haute 
+                                @elseif($incident->priorite == 2) Moyenne 
+                                @else Basse 
+                                @endif
+                              </td>
+                              <td class="px-4 py-2 border border-gray-400">
+                                @if($incident->etat_id == 1) Ouvert 
+                                @elseif($incident->etat_id == 2) En cours 
+                                @else Fermé 
+                                @endif
+                              </td>
+                              <td class="px-4 py-2 border border-gray-400">{{ $incident->date_fermeture }}</td>
+                              <td class="px-4 py-2 border border-gray-400">{{ $incident->created_at }}</td>
+                              @if (auth()->user()->role == 'agent')
+                              <td class="px-4 py-2 border border-gray-400">{{ $incident->user->name }}</td>
+                              <td class="px-4 py-2 border border-gray-400">
+                                <a href="{{ route('incident.show', $incident->id) }}" class="text-blue-500 hover:text-blue-700">Voir</a>
+                              </td>
+                              @endif
                             </tr>
-                            @endforeach --}}
+                            @endforeach
                           </tbody>
                         </table>
                         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" onclick="window.location.href='{{ route('incident.create') }}'">Signaler un incident</button>

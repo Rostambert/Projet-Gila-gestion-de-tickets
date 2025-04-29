@@ -18,4 +18,16 @@ class Incident extends Model
         'materiel_id',
         'etat_id',
     ];
+    public function materiel()
+    {
+        return $this->belongsTo(materiel::class);
+    }
+    public function etat()
+    {
+        return $this->belongsTo(etat::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
