@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('incidents', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('description');
+            $table->string('salle');
+            $table->string('poste');
+            $table->string('batiment');
+            $table->string('materiel');
+            $table->string('etat');
+            $table->string('priorité');
+            $table->timestamps('dateHeureFermeture');
+            $table->timestamps('dateHeureOuverture');
         });
     }
 

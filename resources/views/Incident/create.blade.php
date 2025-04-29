@@ -9,72 +9,80 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-                
-                        <!-- Name -->
-                        <div>
-                            <x-input-label for="name" :value="__('Name')" />
-                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                    <x-app-layout>
+                        <div class="max-w-2xl mx-auto p-6 bg-white shadow rounded">
+                            <h1 class="text-2xl font-bold mb-4">Signaler un incident</h1>
+                            <form method="POST" action="{{ route('incident.create') }}">
+                                @csrf
+                    
+                                <div class="mb-4">
+                                    <x-input-label for="description" :value="__('Description')" />
+                                    <textarea id="description" name="description" rows="4" required
+                                        class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+                                </div>
+                    
+                                <div class="mb-4">
+                                    <x-input-label for="salle" :value="__('Salle')" />
+                                    <x-text-input id="salle" name="salle" required />
+                                </div>
+                    
+                                <div class="mb-4">
+                                    <x-input-label for="poste" :value="__('Poste')" />
+                                    <x-text-input id="poste" name="poste" required />
+                                </div>
+                    
+                                <div class="mb-4">
+                                    <x-input-label for="batiment" :value="__('Bâtiment')" />
+                                    <x-text-input id="batiment" name="batiment" required />
+                                </div>
+                    
+                                <div class="mb-4">
+                                    <x-input-label for="materiel" :value="__('Matériel concerné')" />
+                                    <select id="materiel" name="materiel" required class="w-full border-gray-300 rounded-md">
+                                        <optgroup label="Bâtiment">
+                                            <option value="aeration">Aération</option>
+                                            <option value="eclairage">Éclairage</option>
+                                            <option value="chauffage">Chauffage</option>
+                                            <option value="fenetre">Fenêtre</option>
+                                            <option value="mur">Mur</option>
+                                            <option value="plafond">Plafond</option>
+                                            <option value="porte">Porte</option>
+                                            <option value="prise_courant">Prise de courant</option>
+                                            <option value="prise_reseau">Prise réseau</option>
+                                            <option value="sol">Sol</option>
+                                        </optgroup>
+                                        <optgroup label="Informatique">
+                                            <option value="clavier">Clavier</option>
+                                            <option value="ecran">Écran</option>
+                                            <option value="pc_portable">PC Portable</option>
+                                            <option value="souris">Souris</option>
+                                            <option value="unite_centrale">Unité centrale</option>
+                                            <option value="videoprojecteur">Vidéoprojecteur</option>
+                                        </optgroup>
+                                        <optgroup label="Mobilier">
+                                            <option value="armoire">Armoire</option>
+                                            <option value="chaise">Chaise</option>
+                                            <option value="table">Table</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                    
+                                <div class="mb-4">
+                                    <x-input-label for="priorite" :value="__('Priorité')" />
+                                    <select id="priorite" name="priorite" required class="w-full border-gray-300 rounded-md">
+                                        <option value="1">1 - Haute</option>
+                                        <option value="2">2 - Moyenne</option>
+                                        <option value="3">3 - Basse</option>
+                                    </select>
+                                </div>
+                    
+                                <div class="text-right">
+                                    <x-primary-button>{{ __('Signaler l\'incident') }}</x-primary-button>
+                                </div>
+                            </form>
                         </div>
-                
-                        <!-- Email Address -->
-                        <div class="mt-4">
-                            <x-input-label for="email" :value="__('Email')" />
-                            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                        </div>
-                       <!-- Role -->
-                        <div>
-                            <x-input-label for="role" :value="__('Role')" />
-                            <select id="role" name="role" class="block mt-1 w-full" required>
-                                <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
-                                <option value="agent" {{ old('role') == 'agent' ? 'selected' : '' }}>Agent</option>
-                            </select>
-                            <x-input-error :messages="$errors->get('role')" class="mt-2" />
-                        </div>
-                        <!-- Telephone -->
-                        <div>
-                            <x-input-label for="telephone" :value="__('Telephone')" />
-                            <x-text-input id="telephone" class="block mt-1 w-full" type="tel" name="telephone" :value="old('telephone')" required autofocus autocomplete="telephone" />
-                            <x-input-error :messages="$errors->get('telephone')" class="mt-2" />
-                        </div>
-                
-                
-                        <!-- Password -->
-                        <div class="mt-4">
-                            <x-input-label for="password" :value="__('Password')" />
-                
-                            <x-text-input id="password" class="block mt-1 w-full"
-                                            type="password"
-                                            name="password"
-                                            required autocomplete="new-password" />
-                
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                        </div>
-                
-                        <!-- Confirm Password -->
-                        <div class="mt-4">
-                            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-                
-                            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                            type="password"
-                                            name="password_confirmation" required autocomplete="new-password" />
-                
-                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-                        </div>
-                
-                        <div class="flex items-center justify-end mt-4">
-                            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                                {{ __('Already registered?') }}
-                            </a>
-                
-                            <x-primary-button class="ms-4">
-                                {{ __('Register') }}
-                            </x-primary-button>
-                        </div>
-                    </form>
+                    </x-app-layout>
+                    
                 </div>
             </div>
         </div>
