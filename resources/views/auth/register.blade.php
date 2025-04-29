@@ -15,6 +15,22 @@
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
+       <!-- Role -->
+        <div>
+            <x-input-label for="role" :value="__('Role')" />
+            <select id="role" name="role" class="block mt-1 w-full" required>
+                <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
+                <option value="agent" {{ old('role') == 'agent' ? 'selected' : '' }}>Agent</option>
+            </select>
+            <x-input-error :messages="$errors->get('role')" class="mt-2" />
+        </div>
+        <!-- Telephone -->
+        <div>
+            <x-input-label for="telephone" :value="__('Telephone')" />
+            <x-text-input id="telephone" class="block mt-1 w-full" type="tel" name="telephone" :value="old('telephone')" required autofocus autocomplete="telephone" />
+            <x-input-error :messages="$errors->get('telephone')" class="mt-2" />
+        </div>
+
 
         <!-- Password -->
         <div class="mt-4">

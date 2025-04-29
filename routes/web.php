@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\IncidentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +30,18 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::resource('incident', IncidentController::class);
+
+Route::middleware(['role:admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index']);
+});
+
+Route::middleware(['role:user'])->group(function () {
+    Route::get('/user/profile', [UserController::class, 'profile']);
+});
+
+Route::middleware(['role:agent'])->group(function () {
+    Route::get('/agent/tickets', [AgentController::class, 'tickets']);
+});
+
