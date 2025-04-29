@@ -1,5 +1,3 @@
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -8,28 +6,9 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <style>
-                        .logo {
-                            font-size: 40px;
-                            font-weight: 700;
-                            color: #005bff;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            margin-bottom: 10px;
-                        }
-                        .logo span {
-                            background-color: #005bff;
-                            color: #fff;
-                            font-size: 28px;
-                            padding: 8px 12px;
-                            border-radius: 50%;
-                            margin-right: 10px;
-                        }
-                        </style>
-                        <div class="logo">
-                            <span>G</span> Gilla
-                        </div>
+                    <h1> GILLA </h1>
+                        {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" /> --}}
+                    </a>
                 </div>
 
                 <!-- Navigation Links -->
