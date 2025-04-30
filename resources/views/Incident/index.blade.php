@@ -67,7 +67,10 @@
                             @endforeach
                           </tbody>
                         </table>
+                        @if (auth()->user()->role=='user')
+                          
                         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" onclick="window.location.href='{{ route('incident.create') }}'">Signaler un incident</button>
+                        @endif
                       </div>
                 </div>
             </div>

@@ -18,7 +18,28 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
             <div>
                 <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                    <style>
+                        .logo {
+                            font-size: 40px;
+                            font-weight: 700;
+                            color: #005bff;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-bottom: 10px;
+                        }
+                        .logo span {
+                            background-color: #005bff;
+                            color: #fff;
+                            font-size: 28px;
+                            padding: 8px 12px;
+                            border-radius: 50%;
+                            margin-right: 10px;
+                        }
+                        </style>
+                        <div class="logo">
+                            <span>G</span> Gilla
+                        </div>
                 </a>
             </div>
 
