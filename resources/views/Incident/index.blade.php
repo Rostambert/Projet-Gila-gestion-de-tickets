@@ -61,7 +61,7 @@
                                 @else Fermé 
                                 @endif
                               </td>
-                              <td class="px-4 py-2 border border-gray-400">{{ $incident->date_fermeture }}</td>
+                              <td class="px-4 py-2 border border-gray-400">{{ $incident->updated_at }}</td>
                               <td class="px-4 py-2 border border-gray-400">{{ $incident->created_at }}</td>
                               @if (auth()->user()->role == 'agent')
                               <td class="px-4 py-2 border border-gray-400">{{ $incident->user->name }}</td>
@@ -71,7 +71,15 @@
                               @endif
                               @if (auth()->user()->role == 'user')
                               <th class="px-4 py-2 border border-gray-400"> 
-                                {{-- j'aimerais recuperer - --}}
+                             
+                                @if ($incident->commentaire)
+                                  {{ $incident->commentaire }}
+                                @else
+                                  Aucun commentaire
+                                @endif
+                                
+                                
+
                               </th>
                                 
                               @endif
