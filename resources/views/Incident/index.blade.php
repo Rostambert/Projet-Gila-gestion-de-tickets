@@ -24,10 +24,16 @@
                               <th class="px-4 py-2 border border-gray-400">Statut</th>
                               <th class="px-4 py-2 border border-gray-400">Date et Heure de fermeture</th>
                               <th class="px-4 py-2 border border-gray-400">Date et Heure de signalement</th>
+                              
                               @if (auth()->user()->role == 'agent')
                               <th class="px-4 py-2 border border-gray-400">Créé par</th>
                               <th class="px-4 py-2 border border-gray-400">Action</th> 
                               @endif
+                              @if (auth()->user()->role == 'user')
+                              <th class="px-4 py-2 border border-gray-400">Commentaire</th>
+                                
+                              @endif
+                              
                               
                               
                               
@@ -62,6 +68,12 @@
                               <td class="px-4 py-2 border border-gray-400">
                                 <a href="{{ route('incident.show', $incident->id) }}" class="text-blue-500 hover:text-blue-700">Voir</a>
                               </td>
+                              @endif
+                              @if (auth()->user()->role == 'user')
+                              <th class="px-4 py-2 border border-gray-400"> 
+                                {{-- j'aimerais recuperer - --}}
+                              </th>
+                                
                               @endif
                             </tr>
                             @endforeach

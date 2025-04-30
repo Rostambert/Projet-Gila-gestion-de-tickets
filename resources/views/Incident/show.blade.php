@@ -40,6 +40,29 @@
                             <option value="2" {{ $incident->etat_id == 2 ? 'selected' : '' }}>En cours</option>
                             <option value="3" {{ $incident->etat_id == 3 ? 'selected' : '' }}>Fermé</option>
                         </select>
+                       
+                        {{-- j'aimerais rajouter une colomne commentaire  --}}
+                        <div class="mb-4 mt-2">
+                            <x-input-label for="commentaire" :value="__('Commentaire')" />
+                            <textarea id="commentaire" name="commentaire" rows="4" required
+                                class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+                        </div>
+                        {{-- j'aimerais rajouter une colomne date de fermeture  --}}
+                        {{-- j'aimerais que date de fermeture ne soit disponible que si on l'etat est fermé --}}
+                        
+
+
+
+                         
+        
+                        <div class="mb-4 mt-2">
+                            <x-input-label for="date_fermeture" :value="__('Date de fermeture')" />
+                            <x-text-input id="date_fermeture" name="date_fermeture" type="datetime-local" required
+                                class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
+                        
+                            
+                    
+                    </form>
                         <x-primary-button class="mt-2">{{ __('Mettre à jour le statut') }}</x-primary-button>
                 </div>
             </div>
